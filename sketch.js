@@ -1,19 +1,26 @@
-var canvas, backgroundImage;
-
-var gameState = 0;
+var canvas;
+var backgroundImage;
+var bgImg;
+var database;
+var form, player;
 var playerCount;
 
-var database;
+function preload() {
+  backgroundImage = loadImage("./assets/planodefundo.png");
+}
 
-var form, player, game;
-
-
-function setup(){
-  canvas = createCanvas(400,400);
+function setup() {
+  canvas = createCanvas(windowWidth, windowHeight);
   database = firebase.database();
+  game = new Game();
+  game.start();
 
 }
 
+function draw() {
+  background(backgroundImage);
+}
 
-function draw(){
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
